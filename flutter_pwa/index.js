@@ -33,7 +33,7 @@ server.use(
     }),
 );
 
-server.use('/',express.static(process.cwd()+"/web"));
+server.use('/',express.static(process.cwd()+"/web1"));
 server.use('/yearwrapup',express.static(process.cwd()+"/web9"));
 server.use('/pollease',express.static(process.cwd()+"/web1"));
 server.get("/testJSON", function (req, res) {
@@ -48,80 +48,23 @@ server.get("/testJSON", function (req, res) {
 });
 
 server.use(
-  "/ieco/mf/*",
-  createProxyMiddleware({
-    target: "https://iecouat.kotakcherry.com/",
-    changeOrigin: true,
-  })
-);
-
-
-
-
-server.use(
   "/ns/*",
   createProxyMiddleware({
-    target: "http://localhost:3004/",
-    changeOrigin: true,
-    logLevel: "debug",
-    cookieDomainRewrite: "localhost",
-  })
-);
-
-
-server.use(
-  "/ieco/api/*",
-  createProxyMiddleware({
-    target: "https://iecouat.kotakcherry.com/",
-    changeOrigin: true,
-    logLevel: "debug",
-    cookieDomainRewrite: "localhost",
-  })
-);
-
-server.use(
-  "/ieco/ieco-customer/*",
-  createProxyMiddleware({
-    target: "https://iecouat.kotakcherry.com/",
-    changeOrigin: true,
-  })
-);
-server.use(
-  "/ieco/ieco-content/*",
-  createProxyMiddleware({
-    target: "https://iecouat.kotakcherry.com/",
-    changeOrigin: true,
-  })
-);
-server.use(
-  "/oauth/*",
-  createProxyMiddleware({
-    target: "https://iecouat.kotakcherry.com/",
+    target: "https://pollapi.cherrybykotak.co/",
     changeOrigin: true,
   })
 );
 
-server.use(
-  "/secret/*",
-  cors(corsOptions),
-  createProxyMiddleware({
-    target: "http://hackthonkartik-env.eba-bgimppdr.ap-south-1.elasticbeanstalk.com/",
-    changeOrigin: true,
-    logLevel: "debug",
-    cookieDomainRewrite: "localhost",
-  })
-);
 
-server.use(
-  "/users/*",
-  cors(corsOptions),
-  createProxyMiddleware({
-    target: "http://hackthonkartik-env.eba-bgimppdr.ap-south-1.elasticbeanstalk.com/",
-    changeOrigin: true,
-    logLevel: "debug",
-    cookieDomainRewrite: "localhost",
-  })
-);
+
+
+
+
+
+
+
+
+
 
 server.listen(3005, () => {
     console.log(`server started on port ${PORT}`);
