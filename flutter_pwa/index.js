@@ -123,6 +123,6 @@ server.use(
   })
 );
 
-server.listen(3006, () => {
+server.listen(3005, () => {
     console.log(`server started on port ${PORT}`);
   });
